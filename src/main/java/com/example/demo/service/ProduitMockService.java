@@ -31,7 +31,7 @@ public class ProduitMockService implements IProduitService {
        produits.add(produit);	
 	}
 
-	@Override
+	
 	public void updateProduit(Produit produit) {
 		// TODO Auto-generated method stub
 		produits.remove(produit);
@@ -47,5 +47,11 @@ public class ProduitMockService implements IProduitService {
 		produits.remove(produit);
 				
 			}
+
+	@Override
+	public Produit updateProduit(Long id, Produit produit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
