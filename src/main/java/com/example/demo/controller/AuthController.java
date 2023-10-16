@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -32,8 +34,6 @@ import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.jwt.JwtUtils;
 import com.example.demo.security.service.UserDetailsImpl;
-
-
 
 
 
@@ -83,6 +83,9 @@ public class AuthController {
   }
 
   
+
+
+  
   
   @PostMapping("/signup")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
@@ -104,7 +107,7 @@ public class AuthController {
                encoder.encode(signUpRequest.getPassword()));
 
     Set<String> strRoles = signUpRequest.getRole();
-    Set<Role> roles = new HashSet<>();
+    Set<Role> roles = new HashSet<Role>();
 
     if (strRoles == null) {
       Role userRole = roleRepository.findByName(ERole.ROLE_USER)
@@ -118,7 +121,7 @@ public class AuthController {
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(adminRole);
 
-          break;
+//          break;
         case "mod":
           Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
